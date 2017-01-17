@@ -17,11 +17,11 @@ func NewMiddlewareApplication (url string) *MiddlewareApplication {
   return &MiddlewareApplication {url: url}
 }
 
-func (app *MiddlewareApplication) Info() string {
+func (app *MiddlewareApplication) Info() types.ResponseInfo {
 	return Fmt("hashes:%v, txs:%v", app.hashCount, app.txCount)
 }
 
-func (app *MiddlewareApplication) AppendTx(tx []byte) types.Result {
+func (app *MiddlewareApplication) DeliverTx(tx []byte) types.Result {
   body, err := elemhttp.Post(app.url+"/append", "application/json", tx, 3)
   if err != nil {
     return tmspError(Fmt("%v", err))
