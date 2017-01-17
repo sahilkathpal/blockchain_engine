@@ -4,7 +4,7 @@ import (
   "encoding/binary"
   "github.com/sahilkathpal/blockchain_engine/lib"
   . "github.com/tendermint/go-common"
-	"github.com/tendermint/tmsp/types"
+	"github.com/tendermint/abci/types"
 )
 
 type MiddlewareApplication struct {
