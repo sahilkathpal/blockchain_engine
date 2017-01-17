@@ -18,7 +18,7 @@ func NewMiddlewareApplication (url string) *MiddlewareApplication {
 }
 
 func (app *MiddlewareApplication) Info() types.ResponseInfo {
-	return Fmt("hashes:%v, txs:%v", app.hashCount, app.txCount)
+	return types.ResponseInfo{Data: Fmt("hashes:%v, txs:%v", app.hashCount, app.txCount)}
 }
 
 func (app *MiddlewareApplication) DeliverTx(tx []byte) types.Result {
