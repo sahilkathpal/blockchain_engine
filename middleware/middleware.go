@@ -13,7 +13,7 @@ type MiddlewareApplication struct {
   url string
 }
 
-func NewMiddleWareApplication (url string) *MiddlewareApplication {
+func NewMiddlewareApplication (url string) *MiddlewareApplication {
   return &MiddlewareApplication {url: url}
 }
 
