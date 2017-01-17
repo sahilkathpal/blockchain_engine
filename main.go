@@ -4,7 +4,7 @@ import (
 	"flag"
 
 	. "github.com/tendermint/go-common"
-	"github.com/sahilkathpal/blockchain_engine"
+	"github.com/sahilkathpal/blockchain_engine/middleware"
 	"github.com/tendermint/tmsp/server"
 	"github.com/tendermint/tmsp/types"
 )
