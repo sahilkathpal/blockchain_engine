@@ -2,7 +2,7 @@ package middleware
 
 import (
   "encoding/binary"
-  "bitbucket.org/sahilkathpal06/blockchain_engine/lib"
+  "github.com/sahilkathpal/blockchain_engine/lib"
   . "github.com/tendermint/go-common"
 	"github.com/tendermint/tmsp/types"
 )
