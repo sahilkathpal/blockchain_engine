@@ -18,7 +18,8 @@ func Post (urlString string, obj []byte, maxRetry int) ([]byte, error) {
 
   resp, err := client.PostForm(urlString, postObj)
   if err != nil {
-    if maxRetry == 0 {
+    if maxRetry <= 0 {
+      fmt.Println(fmt.Sprintf("Error reaching smart contract engine: %v", err))
       return nil, errors.New(fmt.Sprintf("Error reaching smart contract engine: %v", err))
     }
     fmt.Println("Retrying...")
