@@ -70,7 +70,7 @@ func (app *MiddlewareApplication) EndBlock(height uint64) (resEndBlock types.Res
 	return
 }
 
-func (app *MiddlewareApplication) InitChain(validators []*Validator) {
+func (app *MiddlewareApplication) InitChain(validators []*types.Validator) {
 }
 
 func tmspError (log string) types.Result {
