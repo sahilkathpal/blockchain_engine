@@ -17,7 +17,7 @@ func main() {
 	flag.Parse()
 
 	// Create the application - in memory or persisted to disk
-	var app types.Application
+	var app types.BaseApplication
 	app = middleware.NewMiddlewareApplication(*urlPtr)
 
 	// Start the listener
