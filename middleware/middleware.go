@@ -62,6 +62,17 @@ func (app *MiddlewareApplication) SetOption(key string, value string) (log strin
 	return ""
 }
 
+func (app *MiddlewareApplication) BeginBlock(hash []byte, header *types.Header) {
+	return
+}
+
+func (app *MiddlewareApplication) EndBlock(height uint64) (resEndBlock types.ResponseEndBlock) {
+	return
+}
+
+func (app *MiddlewareApplication) InitChain(validators []*Validator) {
+}
+
 func tmspError (log string) types.Result {
   return types.Result {
     Code: types.CodeType_InternalError,
