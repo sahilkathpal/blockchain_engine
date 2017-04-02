@@ -55,7 +55,9 @@ func (app *MiddlewareApplication) Commit() types.Result {
 }
 
 func (app *MiddlewareApplication) Query(query types.RequestQuery) types.ResponseQuery {
-	return types.NewResultOK(nil, Fmt("Query is not supported"))
+	return types.ResponseQuery {
+    Log: Fmt("Query is not supported")
+  }
 }
 
 func (app *MiddlewareApplication) SetOption(key string, value string) (log string) {
