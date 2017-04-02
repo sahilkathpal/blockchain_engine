@@ -54,7 +54,7 @@ func (app *MiddlewareApplication) Commit() types.Result {
 	}
 }
 
-func (app *MiddlewareApplication) Query(query []byte) types.Result {
+func (app *MiddlewareApplication) Query(query types.RequestQuery) types.ResponseQuery {
 	return types.NewResultOK(nil, Fmt("Query is not supported"))
 }
 
