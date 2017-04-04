@@ -71,7 +71,7 @@ func (app *MiddlewareApplication) SetOption(key string, value string) (log strin
 }
 
 func (app *MiddlewareApplication) BeginBlock(hash []byte, header *types.Header) {
-	return app.changes = make([]*types.Validator, 0)
+	app.changes = make([]*types.Validator, 0)
 }
 
 func (app *MiddlewareApplication) EndBlock(height uint64) (resEndBlock types.ResponseEndBlock) {
