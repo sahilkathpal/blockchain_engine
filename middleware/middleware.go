@@ -2,6 +2,7 @@ package middleware
 
 import (
   "fmt"
+  "encoding/json"
   "encoding/binary"
   "github.com/sahilkathpal/blockchain_engine/lib"
   . "github.com/tendermint/go-common"
@@ -79,10 +80,14 @@ func (app *MiddlewareApplication) EndBlock(height uint64) (resEndBlock types.Res
 }
 
 func (app *MiddlewareApplication) InitChain(validators []*types.Validator) {
-  body, err := elemhttp.Post(app.url+"/validators/genesis", validators, 3)
-  if err != nil {
-    return
+  _, v = range validators {
+    vjson, _ := json.Marshal(v)
+    body, err := elemhttp.Post(app.url+"/validators/genesis", validators, 3)
+    if err != nil {
+      return
+    }
   }
+
 
   return
 }
