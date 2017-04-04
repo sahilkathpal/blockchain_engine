@@ -1,6 +1,7 @@
 package middleware
 
 import (
+  "fmt"
   "encoding/binary"
   "github.com/sahilkathpal/blockchain_engine/lib"
   . "github.com/tendermint/go-common"
@@ -11,6 +12,9 @@ type MiddlewareApplication struct {
   hashCount int
   txCount int
   url string
+
+  changes []*types.Validator
+
 }
 
 func NewMiddlewareApplication (url string) *MiddlewareApplication {
@@ -26,6 +30,8 @@ func (app *MiddlewareApplication) DeliverTx(tx []byte) types.Result {
   if err != nil {
     return tmspError(Fmt("%v", err))
   }
+
+  fmt.Print(body)
 
   app.txCount += 1
 
@@ -65,14 +71,20 @@ func (app *MiddlewareApplication) SetOption(key string, value string) (log strin
 }
 
 func (app *MiddlewareApplication) BeginBlock(hash []byte, header *types.Header) {
-	return
+	return app.changes = make([]*types.Validator, 0)
 }
 
 func (app *MiddlewareApplication) EndBlock(height uint64) (resEndBlock types.ResponseEndBlock) {
-	return
+  return types.ResponseEndBlock{Diffs: app.changes}
 }
 
 func (app *MiddlewareApplication) InitChain(validators []*types.Validator) {
+  body, err := elemhttp.Post(app.url+"/validators/genesis", validators, 3)
+  if err != nil {
+    return
+  }
+
+  return
 }
 
 func tmspError (log string) types.Result {
