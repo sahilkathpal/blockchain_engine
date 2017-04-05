@@ -1,6 +1,7 @@
 package middleware
 
 import (
+  "fmt"
   "encoding/binary"
   "github.com/sahilkathpal/blockchain_engine/lib"
   . "github.com/tendermint/go-common"
