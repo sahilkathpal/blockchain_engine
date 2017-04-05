@@ -24,6 +24,7 @@ func (app *MiddlewareApplication) Info() types.ResponseInfo {
 func (app *MiddlewareApplication) DeliverTx(tx []byte) types.Result {
   body, err := elemhttp.Post(app.url+"/append", tx, 3)
   if err != nil {
+    fmt.Print("DeliverTx error from Iris: %v", err)
     return tmspError(Fmt("%v", err))
   }
 
@@ -35,6 +36,7 @@ func (app *MiddlewareApplication) DeliverTx(tx []byte) types.Result {
 func (app *MiddlewareApplication) CheckTx(tx []byte) types.Result {
   body, err := elemhttp.Post(app.url+"/check", tx, 3)
   if err != nil {
+    fmt.Print("CheckTx error from Iris: %v", err)
     return tmspError(Fmt("%v", err))
   }
 
