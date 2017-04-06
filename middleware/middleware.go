@@ -80,6 +80,7 @@ func (app *MiddlewareApplication) EndBlock(height uint64) (resEndBlock types.Res
 }
 
 func (app *MiddlewareApplication) InitChain(validators []*types.Validator) {
+  fmt.Printf("Hello, you are in initchain")
   for _, v := range validators {
     vjson, _ := json.Marshal(v)
     _, err := elemhttp.Post(app.url+"/validators/genesis", vjson, 3)
