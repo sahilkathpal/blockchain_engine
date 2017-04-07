@@ -68,7 +68,8 @@ func (app *MiddlewareApplication) SetOption(key string, value string) (log strin
 }
 
 func (app *MiddlewareApplication) BeginBlock(hash []byte, header *types.Header) {
-	return
+  fmt.Printf("Begin Block Baby!")
+  return
 }
 
 func (app *MiddlewareApplication) EndBlock(height uint64) (resEndBlock types.ResponseEndBlock) {
@@ -76,6 +77,7 @@ func (app *MiddlewareApplication) EndBlock(height uint64) (resEndBlock types.Res
 }
 
 func (app *MiddlewareApplication) InitChain(validators []*types.Validator) {
+  fmt.Println("Finally in InitChain")
 }
 
 func tmspError (log string) types.Result {
