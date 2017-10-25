@@ -35,5 +35,5 @@ func Post (urlString string, obj []byte, maxRetry int) ([]byte, error) {
     return body, nil
   }
 
-  return body, errors.New(fmt.Sprintf("%v : %v", resp.StatusCode, body))
+  return nil, errors.New(fmt.Sprintf("%v : %v", resp.StatusCode, body))
 }
