@@ -38,6 +38,7 @@ func (app *MiddlewareApplication) CheckTx(tx []byte) types.Result {
   body, err := elemhttp.Post(app.url+"/check", tx, 3)
   if err != nil {
     fmt.Printf("CheckTx error from Iris: %v", err)
+    return types.NewResultOK(body, "")
     return tmspError(Fmt("%v", err))
   }
 
