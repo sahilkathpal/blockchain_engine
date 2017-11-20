@@ -67,7 +67,7 @@ func (app *MiddlewareApplication) SetOption(key string, value string) (log strin
 	return ""
 }
 
-func (app *MiddlewareApplication) BeginBlock(hash []byte, header *types.Header) {
+func (app *MiddlewareApplication) BeginBlock(params types.RequestBeginBlock) {
   fmt.Printf("Begin Block Baby!")
   return
 }
