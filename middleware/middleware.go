@@ -18,7 +18,7 @@ func NewMiddlewareApplication (url string) *MiddlewareApplication {
   return &MiddlewareApplication {url: url}
 }
 
-func (app *MiddlewareApplication) Info() types.ResponseInfo {
+func (app *MiddlewareApplication) Info(types.RequestInfo) types.ResponseInfo {
 	return types.ResponseInfo{Data: Fmt("hashes:%v, txs:%v", app.hashCount, app.txCount)}
 }
 
