@@ -76,7 +76,7 @@ func (app *MiddlewareApplication) EndBlock(height uint64) (resEndBlock types.Res
 	return
 }
 
-func (app *MiddlewareApplication) InitChain(validators []*types.Validator) {
+func (app *MiddlewareApplication) InitChain(validators types.RequestInitChain) {
   fmt.Println("Finally in InitChain")
 }
 
