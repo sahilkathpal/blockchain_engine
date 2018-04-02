@@ -26,12 +26,12 @@ func (app *MiddlewareApplication) DeliverTx(tx []byte) types.ResponseDeliverTx {
   body, err := elemhttp.Post(app.url+"/append", tx, 3)
   if err != nil {
     fmt.Printf("DeliverTx error from Iris: %v", err)
-    return tmspError(Fmt("%v", err))
+    return tmspError()
   }
 
   app.txCount += 1
 
-  return types.NewResultOK(body, "")
+    return types.ResponseDeliverTx{Data: body, Code: 0}
 }
 
 func (app *MiddlewareApplication) CheckTx(tx []byte) types.ResponseCheckTx {
@@ -41,7 +41,7 @@ func (app *MiddlewareApplication) CheckTx(tx []byte) types.ResponseCheckTx {
     return tmspError(Fmt("%v", err))
   }
 
-  return types.NewResultOK(body, "")
+  return types.ResponseCheckTx{Data: body}
 }
 
 
@@ -49,11 +49,11 @@ func (app *MiddlewareApplication) Commit() types.ResponseCommit {
 	app.hashCount += 1
 
 	if app.txCount == 0 {
-		return types.CodeTypeOK
+		return types.ResponseCommit{Code: 0}
 	} else {
 		hash := make([]byte, 8)
 		binary.BigEndian.PutUint64(hash, uint64(app.txCount))
-		return types.NewResultOK(hash, "")
+		return types.ResponseCommit{Data: hash}
 	}
 }
 
@@ -80,9 +80,9 @@ func (app *MiddlewareApplication) InitChain(validators types.RequestInitChain) {
   fmt.Println("Finally in InitChain")
 }
 
-func tmspError (log string) types.ABCIesult {
+func tmspError () types.ABCIesult {
   return types.ABCIResult {
-    Code: types.CodeType_InternalError,
+    Code: 1,
     Data: nil,
   }
 }
