@@ -26,7 +26,7 @@ func (app *MiddlewareApplication) DeliverTx(tx []byte) types.ResponseDeliverTx {
   body, err := elemhttp.Post(app.url+"/append", tx, 3)
   if err != nil {
     fmt.Printf("DeliverTx error from Iris: %v", err)
-    return tmspError(fmt.Sprintf("%v", err))
+    return types.ResponseCheckTx{Data: err, Code: 1}
   }
 
   app.txCount += 1
@@ -38,7 +38,7 @@ func (app *MiddlewareApplication) CheckTx(tx []byte) types.ResponseCheckTx {
   body, err := elemhttp.Post(app.url+"/check", tx, 3)
   if err != nil {
     fmt.Printf("CheckTx error from Iris: %v", err)
-    return tmspError(Fmt("%v", err))
+    return types.ResponseCheckTx{Data: err, Code: 1}
   }
 
   return types.ResponseCheckTx{Data: body}
@@ -80,8 +80,4 @@ func (app *MiddlewareApplication) InitChain(validators types.RequestInitChain) {
   fmt.Println("Finally in InitChain")
 }
 
-func tmspError (err string) types.ResponseException {
-  return types.ABCIResult {
-    Error: err,
-  }
 }
