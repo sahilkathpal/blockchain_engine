@@ -22,7 +22,7 @@ func (app *MiddlewareApplication) Info(types.RequestInfo) types.ResponseInfo {
 	return types.ResponseInfo{Data: Fmt("hashes:%v, txs:%v", app.hashCount, app.txCount)}
 }
 
-func (app *MiddlewareApplication) DeliverTx(tx []byte) types.Result {
+func (app *MiddlewareApplication) DeliverTx(tx []byte) types.ResponseDeliverTx {
   body, err := elemhttp.Post(app.url+"/append", tx, 3)
   if err != nil {
     fmt.Printf("DeliverTx error from Iris: %v", err)
@@ -34,7 +34,7 @@ func (app *MiddlewareApplication) DeliverTx(tx []byte) types.Result {
   return types.NewResultOK(body, "")
 }
 
-func (app *MiddlewareApplication) CheckTx(tx []byte) types.Result {
+func (app *MiddlewareApplication) CheckTx(tx []byte) types.ResponseCheckTx {
   body, err := elemhttp.Post(app.url+"/check", tx, 3)
   if err != nil {
     fmt.Printf("CheckTx error from Iris: %v", err)
@@ -45,7 +45,7 @@ func (app *MiddlewareApplication) CheckTx(tx []byte) types.Result {
 }
 
 
-func (app *MiddlewareApplication) Commit() types.Result {
+func (app *MiddlewareApplication) Commit() types.ResponseCommit {
 	app.hashCount += 1
 
 	if app.txCount == 0 {
