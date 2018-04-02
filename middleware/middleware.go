@@ -49,7 +49,7 @@ func (app *MiddlewareApplication) Commit() types.ResponseCommit {
 	app.hashCount += 1
 
 	if app.txCount == 0 {
-		return types.OK
+		return types.CodeTypeOK
 	} else {
 		hash := make([]byte, 8)
 		binary.BigEndian.PutUint64(hash, uint64(app.txCount))
@@ -80,10 +80,9 @@ func (app *MiddlewareApplication) InitChain(validators types.RequestInitChain) {
   fmt.Println("Finally in InitChain")
 }
 
-func tmspError (log string) types.Result {
-  return types.Result {
+func tmspError (log string) types.ABCIesult {
+  return types.ABCIResult {
     Code: types.CodeType_InternalError,
     Data: nil,
-    Log: log,
   }
 }
