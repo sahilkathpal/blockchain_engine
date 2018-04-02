@@ -82,6 +82,6 @@ func (app *MiddlewareApplication) InitChain(validators types.RequestInitChain) {
 
 func tmspError (err string) types.ResponseException {
   return types.ABCIResult {
-    Error: err
+    Error: err,
   }
 }
