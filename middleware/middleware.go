@@ -72,7 +72,7 @@ func (app *MiddlewareApplication) BeginBlock(params types.RequestBeginBlock) (re
   return
 }
 
-func (app *MiddlewareApplication) EndBlock(height uint64) (resEndBlock types.ResponseEndBlock) {
+func (app *MiddlewareApplication) EndBlock(height types.RequestEndBlock) (resEndBlock types.ResponseEndBlock) {
 	return
 }
 
