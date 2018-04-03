@@ -80,4 +80,3 @@ func (app *MiddlewareApplication) InitChain(validators types.RequestInitChain) {
   fmt.Println("Finally in InitChain")
 }
 
-}
