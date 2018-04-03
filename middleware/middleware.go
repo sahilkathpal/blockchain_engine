@@ -63,7 +63,7 @@ func (app *MiddlewareApplication) Query(query types.RequestQuery) types.Response
   }
 }
 
-func (app *MiddlewareApplication) SetOption(key string, value string) (log types.ResponseSetOption) {
+func (app *MiddlewareApplication) SetOption(params types.RequestSetOption) (log types.ResponseSetOption) {
 	return types.ResponseSetOption{}
 }
 
