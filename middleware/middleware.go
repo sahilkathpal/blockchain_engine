@@ -63,8 +63,8 @@ func (app *MiddlewareApplication) Query(query types.RequestQuery) types.Response
   }
 }
 
-func (app *MiddlewareApplication) SetOption(key string, value string) (log string) {
-	return ""
+func (app *MiddlewareApplication) SetOption(key string, value string) (log types.ResponseSetOption) {
+	return types.ResponseSetOption{}
 }
 
 func (app *MiddlewareApplication) BeginBlock(params types.RequestBeginBlock) (resBeginBlock types.ResponseBeginBlock) {
