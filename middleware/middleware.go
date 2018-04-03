@@ -78,5 +78,6 @@ func (app *MiddlewareApplication) EndBlock(height types.RequestEndBlock) (resEnd
 
 func (app *MiddlewareApplication) InitChain(validators types.RequestInitChain) types.ResponseInitChain {
   fmt.Println("Finally in InitChain")
+  return types.ResponseInitChain{}
 }
 
