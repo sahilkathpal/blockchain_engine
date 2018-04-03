@@ -67,7 +67,7 @@ func (app *MiddlewareApplication) SetOption(key string, value string) (log strin
 	return ""
 }
 
-func (app *MiddlewareApplication) BeginBlock(params types.RequestBeginBlock) {
+func (app *MiddlewareApplication) BeginBlock(params types.RequestBeginBlock) (resBeginBlock types.ResponseBeginBlock) {
   fmt.Printf("Begin Block Baby!")
   return
 }
