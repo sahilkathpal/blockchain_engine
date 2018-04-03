@@ -26,7 +26,7 @@ func (app *MiddlewareApplication) DeliverTx(tx []byte) types.ResponseDeliverTx {
   body, err := elemhttp.Post(app.url+"/append", tx, 3)
   if err != nil {
     fmt.Printf("DeliverTx error from Iris: %v", err)
-    return types.ResponseCheckTx{Data: err, Code: 1}
+    return types.ResponseCheckTx{Data: fmt.Sprintf("Error: %s", err), Code: 1}
   }
 
   app.txCount += 1
